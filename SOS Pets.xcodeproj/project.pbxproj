@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		889370B220599E8300DFC62A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889370B120599E8300DFC62A /* AppDelegate.swift */; };
-		889370B420599E8300DFC62A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889370B320599E8300DFC62A /* ViewController.swift */; };
+		889370B420599E8300DFC62A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889370B320599E8300DFC62A /* InitialViewController.swift */; };
 		889370B720599E8300DFC62A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889370B520599E8300DFC62A /* Main.storyboard */; };
 		889370B920599E8300DFC62A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889370B820599E8300DFC62A /* Assets.xcassets */; };
 		889370BC20599E8300DFC62A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889370BA20599E8300DFC62A /* LaunchScreen.storyboard */; };
+		889FAC092059A10B00503AFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889FAC082059A10B00503AFF /* GoogleService-Info.plist */; };
+		E5D3AFDDA25BF8D486B98C37 /* Pods_SOS_Pets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163947B6AB11C054D3E6A271 /* Pods_SOS_Pets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		163947B6AB11C054D3E6A271 /* Pods_SOS_Pets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOS_Pets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F7FFB56D492F30ECFD8D274 /* Pods-SOS Pets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS Pets.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets.release.xcconfig"; sourceTree = "<group>"; };
 		889370AE20599E8300DFC62A /* SOS Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SOS Pets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		889370B120599E8300DFC62A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		889370B320599E8300DFC62A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		889370B320599E8300DFC62A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		889370B620599E8300DFC62A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		889370B820599E8300DFC62A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		889370BB20599E8300DFC62A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889370BD20599E8300DFC62A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889FAC082059A10B00503AFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB70EA247341695FE2349575 /* Pods-SOS Pets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS Pets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D3AFDDA25BF8D486B98C37 /* Pods_SOS_Pets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1B43CA4BED687D94B7D52E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				163947B6AB11C054D3E6A271 /* Pods_SOS_Pets.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		889370A520599E8300DFC62A = {
 			isa = PBXGroup;
 			children = (
+				889FAC082059A10B00503AFF /* GoogleService-Info.plist */,
 				889370B020599E8300DFC62A /* SOS Pets */,
 				889370AF20599E8300DFC62A /* Products */,
+				F2891B1DA716F9C82746E5C4 /* Pods */,
+				0D1B43CA4BED687D94B7D52E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +73,22 @@
 			isa = PBXGroup;
 			children = (
 				889370B120599E8300DFC62A /* AppDelegate.swift */,
-				889370B320599E8300DFC62A /* ViewController.swift */,
+				889370B320599E8300DFC62A /* InitialViewController.swift */,
 				889370B520599E8300DFC62A /* Main.storyboard */,
 				889370B820599E8300DFC62A /* Assets.xcassets */,
 				889370BA20599E8300DFC62A /* LaunchScreen.storyboard */,
 				889370BD20599E8300DFC62A /* Info.plist */,
 			);
 			path = "SOS Pets";
+			sourceTree = "<group>";
+		};
+		F2891B1DA716F9C82746E5C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB70EA247341695FE2349575 /* Pods-SOS Pets.debug.xcconfig */,
+				3F7FFB56D492F30ECFD8D274 /* Pods-SOS Pets.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 889370C020599E8300DFC62A /* Build configuration list for PBXNativeTarget "SOS Pets" */;
 			buildPhases = (
+				DDB26EA90CF1C4EBD34DC714 /* [CP] Check Pods Manifest.lock */,
 				889370AA20599E8300DFC62A /* Sources */,
 				889370AB20599E8300DFC62A /* Frameworks */,
 				889370AC20599E8300DFC62A /* Resources */,
+				F594AE4A66F437D81CF2A345 /* [CP] Embed Pods Frameworks */,
+				F6D6187269B945E7CEA5983A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				889370BC20599E8300DFC62A /* LaunchScreen.storyboard in Resources */,
+				889FAC092059A10B00503AFF /* GoogleService-Info.plist in Resources */,
 				889370B920599E8300DFC62A /* Assets.xcassets in Resources */,
 				889370B720599E8300DFC62A /* Main.storyboard in Resources */,
 			);
@@ -131,12 +162,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DDB26EA90CF1C4EBD34DC714 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SOS Pets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F594AE4A66F437D81CF2A345 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6D6187269B945E7CEA5983A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		889370AA20599E8300DFC62A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889370B420599E8300DFC62A /* ViewController.swift in Sources */,
+				889370B420599E8300DFC62A /* InitialViewController.swift in Sources */,
 				889370B220599E8300DFC62A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +365,7 @@
 		};
 		889370C120599E8300DFC62A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB70EA247341695FE2349575 /* Pods-SOS Pets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +381,7 @@
 		};
 		889370C220599E8300DFC62A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F7FFB56D492F30ECFD8D274 /* Pods-SOS Pets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
