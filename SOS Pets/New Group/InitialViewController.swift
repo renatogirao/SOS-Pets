@@ -20,13 +20,17 @@ class InitialViewController: UIViewController {
     
     //MARK: - PROPRIEDADES
     //MARK: - OUTLETS
+    
+    @IBOutlet weak var LetsGoButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
+    
     //MARK: - OVERRIDES
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        firebaseDBReference.child("Teste De Banco de Dados222").setValue("100")
+        
         
     }
     

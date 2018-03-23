@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6049D89D205B36BE0061A61A /* VetsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */; };
+		6049D89F205B38950061A61A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049D89E205B38950061A61A /* Place.swift */; };
 		889370B220599E8300DFC62A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889370B120599E8300DFC62A /* AppDelegate.swift */; };
 		889370B420599E8300DFC62A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889370B320599E8300DFC62A /* InitialViewController.swift */; };
 		889370B720599E8300DFC62A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889370B520599E8300DFC62A /* Main.storyboard */; };
@@ -19,9 +21,11 @@
 /* Begin PBXFileReference section */
 		163947B6AB11C054D3E6A271 /* Pods_SOS_Pets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOS_Pets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7FFB56D492F30ECFD8D274 /* Pods-SOS Pets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS Pets.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets.release.xcconfig"; sourceTree = "<group>"; };
+		6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetsListTableViewController.swift; sourceTree = "<group>"; };
+		6049D89E205B38950061A61A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		889370AE20599E8300DFC62A /* SOS Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SOS Pets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		889370B120599E8300DFC62A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		889370B320599E8300DFC62A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		889370B320599E8300DFC62A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialViewController.swift; path = "../New Group/InitialViewController.swift"; sourceTree = "<group>"; };
 		889370B620599E8300DFC62A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		889370B820599E8300DFC62A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		889370BB20599E8300DFC62A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,10 +54,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6049D899205B34CE0061A61A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				889370B520599E8300DFC62A /* Main.storyboard */,
+				889370BA20599E8300DFC62A /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6049D89A205B34FF0061A61A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				889370B320599E8300DFC62A /* InitialViewController.swift */,
+				6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6049D89B205B35170061A61A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				889370B120599E8300DFC62A /* AppDelegate.swift */,
+				6049D89E205B38950061A61A /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		889370A520599E8300DFC62A = {
 			isa = PBXGroup;
 			children = (
-				889FAC082059A10B00503AFF /* GoogleService-Info.plist */,
 				889370B020599E8300DFC62A /* SOS Pets */,
 				889370AF20599E8300DFC62A /* Products */,
 				F2891B1DA716F9C82746E5C4 /* Pods */,
@@ -72,12 +102,12 @@
 		889370B020599E8300DFC62A /* SOS Pets */ = {
 			isa = PBXGroup;
 			children = (
-				889370B120599E8300DFC62A /* AppDelegate.swift */,
-				889370B320599E8300DFC62A /* InitialViewController.swift */,
-				889370B520599E8300DFC62A /* Main.storyboard */,
+				6049D89B205B35170061A61A /* Model */,
+				6049D89A205B34FF0061A61A /* Controller */,
+				6049D899205B34CE0061A61A /* View */,
 				889370B820599E8300DFC62A /* Assets.xcassets */,
-				889370BA20599E8300DFC62A /* LaunchScreen.storyboard */,
 				889370BD20599E8300DFC62A /* Info.plist */,
+				889FAC082059A10B00503AFF /* GoogleService-Info.plist */,
 			);
 			path = "SOS Pets";
 			sourceTree = "<group>";
@@ -188,17 +218,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -230,7 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				889370B420599E8300DFC62A /* InitialViewController.swift in Sources */,
+				6049D89D205B36BE0061A61A /* VetsListTableViewController.swift in Sources */,
 				889370B220599E8300DFC62A /* AppDelegate.swift in Sources */,
+				6049D89F205B38950061A61A /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
