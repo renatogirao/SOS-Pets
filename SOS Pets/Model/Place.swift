@@ -11,15 +11,20 @@ import UIKit
 
 class Place {
     
-    var name: String
-    var coordinate: String
-    var telephone: String
-    var logo: UIImage
-    var address: String
-    var hourOf: String
+    var name: String?
+    var coordinate: [String]?
+    var telephone: String?
+    var logo: UIImage?
+    var address: String?
+    var hourOperating: String?
     
-    init(name: String, coordinate: String, telehone: String, logo: UIImage, address: String, hourOf: String) {
-        <#statements#>
-    }
+//    init(name: String, coordinate: String, telephone: String, logo: UIImage, address: String, hourOperating: String) {
+//        self.name = name
+//        self.coordinate = coordinate
+//        self.telephone = telephone
+//        self.logo = logo
+//        self.address = address
+//        self.hourOperating = hourOperating
+//    }
     
 }

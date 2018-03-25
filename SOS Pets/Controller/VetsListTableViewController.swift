@@ -8,38 +8,84 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class VetsListTableViewController: UITableViewController {
 
     var firebaseDBReference : DatabaseReference! = Database.database().reference()
+    let VetInfo = "VetInfo"
+    var vets = [Place]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         firebaseDBReference.child("Teste De Banco de Dados222").setValue("100")
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        registerNotifications()
+        
+      
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+        tableView.dataSource = self
+        tableView.delegate = self
+        
     }
-
+    func registerNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadVets(notification:)), name: NSNotification.Name(rawValue: VetInfo) , object: nil)
+    }
+    
+    @objc func reloadVets(notification: Notification) {
+        
+        if let userinfo = notification.userInfo{
+            if let vets = userinfo["vets"] as? [Place]{
+                self.vets = vets
+                self.tableView.reloadData()
+                
+            }
+        }
+    }
+    
+    func getVetsFromDB () {
+        
+        self.firebaseDBReference.child("Vets").observe(.value, with: {(snapshot: DataSnapshot) in
+        
+            if let values = snapshot.value as? [String: Any]{
+            var vets = [Place]()
+            
+                for postValue in values {
+                    let value = postValue.value as! [String: Any]
+                    
+                    let vet = Place()
+                    
+                    vet.name = value["Nome"] as? String
+                    vet.coordinate = value["Coordenadas"] as? [String]
+                    vet.telephone = value["Telefone"] as? String
+                    vet.logo = value["Logo"] as? UIImage
+                    vet.address = value["Endereco"] as? String
+                    vet.hourOperating = value["Horario de Funcionamento"] as? String
+                    
+                    vets.append(vet)
+                    
+                }
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.VetInfo), object: nil, userInfo: ["vets": vets])
+        }
+        })
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return vets.count
     }
 
     /*
