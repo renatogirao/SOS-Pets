@@ -57,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2la-WV-0Vl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaVet" id="2la-WV-0Vl">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2la-WV-0Vl" id="o3S-bL-fO2">
@@ -71,7 +71,10 @@
                             <outlet property="delegate" destination="V1W-xU-ztO" id="VlA-cp-WZu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Xd6-hy-tBA"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Xd6-hy-tBA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="cWz-om-o4W"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Ftd-yH-nHI"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="xQt-eo-SmW" kind="show" id="L3c-ee-7pe"/>
                     </connections>
