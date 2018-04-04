@@ -10,19 +10,23 @@ import UIKit
 import FirebaseDatabase
 import CoreLocation
 
-class VetsListTableViewController: UITableViewController {
+class VetsListTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     
     let VetInfo = "VetInfo"
     var vets : [Place] = []
+    var localizationManager = CLLocationManager()
+    let firebaseDBReference : DatabaseReference! = Database.database().reference()
+    
+    @IBOutlet weak var distanceFromVetCell: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print ("\(vets.description)")
         
-        //        firebaseDBReference.child("Teste De Banco de Dados222").setValue("100")
         //        registerNotifications()
-        
+        //tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,38 +34,64 @@ class VetsListTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        var firebaseDBReference : DatabaseReference! = Database.database().reference()
-        var vetsList = firebaseDBReference.child("Vets")
         
         //MARK: Recuperar dados do Firebase
+        
+        
+        
+        var vetsList = firebaseDBReference.child("Vets").child("Vet Legal")
+        
+        
         //MARK: Observer "avisa" o banco de que tem novas informaçøes
         vetsList.observe(DataEventType.value, with: {(dadosRecuperados) in
             
-            let dadosDoVet = dadosRecuperados.value as? NSDictionary
+            let dadosRecuperadosDoVet = dadosRecuperados.value as? NSDictionary
             
-            //Recupera os dados do Firebase
+            //MARK: Recupera os dados do Firebase
             
-            let nameOfVet = dadosDoVet?["nome"] as! String
-            let addressOfVet = dadosDoVet?["endereco"] as! String
-            let telephoneOfVet = dadosDoVet?["telefone"] as! String
-            let coordinateOfVet = dadosDoVet?["coordenada"] as! String
-            let imageOfVet = dadosDoVet?["logo"] as! UIImage
-            let specialtyOfVet = dadosDoVet?["especialidade"] as! String
-            let hourOfVet = dadosDoVet?["horario"] as! String
+            let nameOfVet = dadosRecuperadosDoVet?["nome"] as! String
+            print("\(nameOfVet)")
+            let addressOfVet = dadosRecuperadosDoVet?["endereco"] as! String
+            print("\(addressOfVet)")
+            let telephoneOfVet = dadosRecuperadosDoVet?["telefone"] as! String
+            print("\(telephoneOfVet)")
+            let coordinateOfVet = dadosRecuperadosDoVet?["coordenada"] as! Double
+            print("\(coordinateOfVet)")
+            let imageOfVet = dadosRecuperadosDoVet?["logo"] as! UIImage
+            print("\(imageOfVet)")
+            let specialtyOfVet = dadosRecuperadosDoVet?["especialidade"] as! String
+            print("\(specialtyOfVet)")
+            let hourOfVet = dadosRecuperadosDoVet?["horario"] as! String
             
             let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: imageOfVet, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
             
+            print ("dados recuperados: \(dadosRecuperados)")
+            print ("\(nameOfVet)")
+            // MARK: Pega a localização do usuário
             
-            print ("alterei os seguintes dados: \(dadosRecuperados)")
+            self.localizationManager.delegate = self
+            self.localizationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.localizationManager.requestWhenInUseAuthorization()
+            self.localizationManager.startUpdatingLocation()
             
         } )
         
         self.tableView.reloadData()
         
     }
+    
+    
     func registerNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadVets(notification:)), name: NSNotification.Name(rawValue: VetInfo) , object: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let localizacaoUsuario = locations.last!
+        //let longitude = localizacaoUsuario.coordinate.longitude
+        //let latitude = localizacaoUsuario.coordinate.latitude
+        
     }
     
     @objc func reloadVets(notification: Notification) {
@@ -81,7 +111,7 @@ class VetsListTableViewController: UITableViewController {
     //
     //        firebaseDBReference.child("Vets").observe(.value, with: {(snapshot: DataSnapshot) in
     //
-    //            if let values = snapshot.value as? [String: Any]{
+    //        if let values = snapshot.value as? [String: Any]{
     //                var vets = [Place]()
     //
     //                for postValue in values {
@@ -113,35 +143,30 @@ class VetsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return self.vets.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let celula = vets[indexPath.row]
-        
-        let vetNaCelula = self.tableView.dequeueReusableCell(withIdentifier: "celulaVet", for: indexPath)
-        
-        return vetNaCelula
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "verDetalhesVet", sender: self )
         
+        
     }
     
-    
-    /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
      
-     // Configure the cell...
-     
-     return cell
+        let reusableCell = "celulaVet"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reusableCell, for: indexPath)
+        cell.textLabel?.text = vets[indexPath.row].name
+        
+        // TO DO: Pegar Localização do usuário aqui
+        var localOfUser : Double
+        localOfUser = 2
+        //var distanceFromVet = (celula.coordinate as! Double - localOfUser)
+        
+       
+        return cell
      }
-     */
     
     /*
      // Override to support conditional editing of the table view.
