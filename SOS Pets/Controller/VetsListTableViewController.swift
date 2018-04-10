@@ -9,14 +9,15 @@
 import UIKit
 import FirebaseDatabase
 import CoreLocation
+import Firebase
 
 class VetsListTableViewController: UITableViewController, CLLocationManagerDelegate {
-    
-    
+
     let VetInfo = "VetInfo"
     var vets : [Place] = []
     var localizationManager = CLLocationManager()
     let firebaseDBReference : DatabaseReference! = Database.database().reference()
+    var refPics: DatabaseReference?
     
     @IBOutlet weak var distanceFromVetCell: UILabel!
     
@@ -47,26 +48,27 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
             
             let dadosRecuperadosDoVet = dadosRecuperados.value as? NSDictionary
             
+            
             //MARK: Recupera os dados do Firebase
             
             let nameOfVet = dadosRecuperadosDoVet?["nome"] as! String
-            print("\(nameOfVet)")
+            
             let addressOfVet = dadosRecuperadosDoVet?["endereco"] as! String
-            print("\(addressOfVet)")
+            
             let telephoneOfVet = dadosRecuperadosDoVet?["telefone"] as! String
-            print("\(telephoneOfVet)")
+            
             let coordinateOfVet = dadosRecuperadosDoVet?["coordenada"] as! Double
-            print("\(coordinateOfVet)")
+            
             let imageOfVet = dadosRecuperadosDoVet?["logo"] as! UIImage
-            print("\(imageOfVet)")
+            
             let specialtyOfVet = dadosRecuperadosDoVet?["especialidade"] as! String
-            print("\(specialtyOfVet)")
+            
             let hourOfVet = dadosRecuperadosDoVet?["horario"] as! String
             
             let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: imageOfVet, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
             
             print ("dados recuperados: \(dadosRecuperados)")
-            print ("\(nameOfVet)")
+            
             // MARK: Pega a localização do usuário
             
             self.localizationManager.delegate = self
