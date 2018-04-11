@@ -52,36 +52,48 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
             //MARK: Recupera os dados do Firebase
             
             let nameOfVet = dadosRecuperadosDoVet?["nome"] as! String
-            
             let addressOfVet = dadosRecuperadosDoVet?["endereco"] as! String
-            
             let telephoneOfVet = dadosRecuperadosDoVet?["telefone"] as! String
-            
             let coordinateOfVet = dadosRecuperadosDoVet?["coordenada"] as! Double
-            
-            let imageOfVet = dadosRecuperadosDoVet?["logo"] as! UIImage
-            
+            let imageOfVet = dadosRecuperadosDoVet?["logo"] as! String
+            let URLOfString = URL(string: imageOfVet)
             let specialtyOfVet = dadosRecuperadosDoVet?["especialidade"] as! String
-            
             let hourOfVet = dadosRecuperadosDoVet?["horario"] as! String
             
-            let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: imageOfVet, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
+            let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: image, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
             
             print ("dados recuperados: \(dadosRecuperados)")
             
-            // MARK: Pega a localização do usuário
+            //MARK: Downlaod da imagem com a URL que é recuperada do Firebase
             
-            self.localizationManager.delegate = self
-            self.localizationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.localizationManager.requestWhenInUseAuthorization()
-            self.localizationManager.startUpdatingLocation()
+            let session = URLSession(configuration: .default)
+            let getImageFromUrl = session.dataTask(with: URLOfString!) { (data, response, error) in
+                
+                
+                if let e = error {
+                    
+                    print("Error Occurred: \(e)")
+                } else {
+                    
+                    if (response as? HTTPURLResponse) != nil {
+                        
+                        if let imageData = data {
+                            
+                            //Pegando a imagem
+                            let image = UIImage(data: imageData)
+                            
+                        } else {
+                            
+                            print("Algum erro ao recuperar a imagem")
+                        }
+                  }
+            }
             
-        } )
+            getImageFromUrl.resume()
         
-        self.tableView.reloadData()
-        
+            self.tableView.reloadData()
+        }
     }
-    
     
     func registerNotifications() {
         

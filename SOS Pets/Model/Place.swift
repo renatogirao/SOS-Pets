@@ -14,12 +14,12 @@ class Place {
     var name: String?
     var coordinate: Double?
     var telephone: String?
-    var logo: UIImage?
+    var logo: String?
     var address: String?
     var hourOperating: String?
     var specialty: String?
     
-    init(name: String, coordinate: Double, telephone: String, logo: UIImage, address: String, hourOperating: String, specialty: String) {
+    init(name: String, coordinate: Double, telephone: String, logo: String, address: String, hourOperating: String, specialty: String) {
         self.name = name
         self.coordinate = coordinate
         self.telephone = telephone
