@@ -35,22 +35,17 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
         tableView.dataSource = self
         tableView.delegate = self
         
-        
+    
         //MARK: Recuperar dados do Firebase
-        
-        
-        
         var vetsList = firebaseDBReference.child("Vets").child("Vet Legal")
-        
+    
         
         //MARK: Observer "avisa" o banco de que tem novas informaçøes
         vetsList.observe(DataEventType.value, with: {(dadosRecuperados) in
-            
-            let dadosRecuperadosDoVet = dadosRecuperados.value as? NSDictionary
-            
+        let dadosRecuperadosDoVet = dadosRecuperados.value as? NSDictionary
             
             //MARK: Recupera os dados do Firebase
-            
+    
             let nameOfVet = dadosRecuperadosDoVet?["nome"] as! String
             let addressOfVet = dadosRecuperadosDoVet?["endereco"] as! String
             let telephoneOfVet = dadosRecuperadosDoVet?["telefone"] as! String
@@ -59,55 +54,39 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
             let URLOfString = URL(string: imageOfVet)
             let specialtyOfVet = dadosRecuperadosDoVet?["especialidade"] as! String
             let hourOfVet = dadosRecuperadosDoVet?["horario"] as! String
-            
-            let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: image, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
-            
+
             print ("dados recuperados: \(dadosRecuperados)")
             
             //MARK: Downlaod da imagem com a URL que é recuperada do Firebase
-            
+ 
             let session = URLSession(configuration: .default)
             let getImageFromUrl = session.dataTask(with: URLOfString!) { (data, response, error) in
-                
-                
                 if let e = error {
-                    
                     print("Error Occurred: \(e)")
                 } else {
-                    
                     if (response as? HTTPURLResponse) != nil {
-                        
                         if let imageData = data {
-                            
                             //Pegando a imagem
                             let image = UIImage(data: imageData)
-                            
+                            let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: image!, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
+
                         } else {
-                            
                             print("Algum erro ao recuperar a imagem")
                         }
-                  }
+                    }
+                }
             }
-            
-            getImageFromUrl.resume()
-        
-            self.tableView.reloadData()
-        }
+                getImageFromUrl.resume()
+                self.tableView.reloadData()
+                
+    })
     }
-    
+
     func registerNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadVets(notification:)), name: NSNotification.Name(rawValue: VetInfo) , object: nil)
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let localizacaoUsuario = locations.last!
-        //let longitude = localizacaoUsuario.coordinate.longitude
-        //let latitude = localizacaoUsuario.coordinate.latitude
-        
-    }
-    
+
     @objc func reloadVets(notification: Notification) {
         
         if let userinfo = notification.userInfo{
@@ -118,37 +97,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
             }
         }
     }
-    
-    //    func getVetsFromDB () {
-    //
-    //        var firebaseDBReference : DatabaseReference! = Database.database().reference()
-    //
-    //        firebaseDBReference.child("Vets").observe(.value, with: {(snapshot: DataSnapshot) in
-    //
-    //        if let values = snapshot.value as? [String: Any]{
-    //                var vets = [Place]()
-    //
-    //                for postValue in values {
-    //                    let value = postValue.value as! [String: Any]
-    //
-    //                    let vet = Place(name: <#String#>, coordinate: <#String#>, telephone: <#String#>)
-    //
-    //                    vet.name = value["Nome"] as? String
-    //                    vet.coordinate = value["Coordenadas"] as? [String]
-    //                    vet.telephone = value["Telefone"] as? String
-    //                    vet.logo = value["Logo"] as? UIImage
-    //                    vet.address = value["Endereco"] as? String
-    //                    vet.hourOperating = value["Horario de Funcionamento"] as? String
-    //
-    //                    vets.append(vet)
-    //
-    //                }
-    //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.VetInfo), object: nil, userInfo: ["vets": vets])
-    //
-    //            }
-    //        })
-    //    }
-    
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -172,12 +121,6 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
         let reusableCell = "celulaVet"
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableCell, for: indexPath)
         cell.textLabel?.text = vets[indexPath.row].name
-        
-        // TO DO: Pegar Localização do usuário aqui
-        var localOfUser : Double
-        localOfUser = 2
-        //var distanceFromVet = (celula.coordinate as! Double - localOfUser)
-        
        
         return cell
      }
