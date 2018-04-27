@@ -107,36 +107,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
-    //    func getVetsFromDB () {
-    //
-    //        var firebaseDBReference : DatabaseReference! = Database.database().reference()
-    //
-    //        firebaseDBReference.child("Vets").observe(.value, with: {(snapshot: DataSnapshot) in
-    //
-    //        if let values = snapshot.value as? [String: Any]{
-    //                var vets = [Place]()
-    //
-    //                for postValue in values {
-    //                    let value = postValue.value as! [String: Any]
-    //
-    //                    let vet = Place(name: <#String#>, coordinate: <#String#>, telephone: <#String#>)
-    //
-    //                    vet.name = value["Nome"] as? String
-    //                    vet.coordinate = value["Coordenadas"] as? [String]
-    //                    vet.telephone = value["Telefone"] as? String
-    //                    vet.logo = value["Logo"] as? UIImage
-    //                    vet.address = value["Endereco"] as? String
-    //                    vet.hourOperating = value["Horario de Funcionamento"] as? String
-    //
-    //                    vets.append(vet)
-    //
-    //                }
-    //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.VetInfo), object: nil, userInfo: ["vets": vets])
-    //
-    //            }
-    //        })
-    //    }
-    
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
