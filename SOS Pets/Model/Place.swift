@@ -12,14 +12,14 @@ import UIKit
 class Place {
     
     var name: String?
-    var coordinate: Double?
+    var coordinate: String?
     var telephone: String?
     var logo: UIImage?
     var address: String?
     var hourOperating: String?
     var specialty: String?
     
-    init(name: String, coordinate: Double, telephone: String, logo: UIImage, address: String, hourOperating: String, specialty: String) {
+    init(name: String, coordinate: String, telephone: String, logo: UIImage, address: String, hourOperating: String, specialty: String) {
         self.name = name
         self.coordinate = coordinate
         self.telephone = telephone

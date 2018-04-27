@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5748F46E2093E2CA00CFE764 /* RecoverDataFromFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748F46D2093E2CA00CFE764 /* RecoverDataFromFirebase.swift */; };
 		577C8D8420929A8D00D7EC8B /* GetVetsFromDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577C8D8320929A8D00D7EC8B /* GetVetsFromDatabaseService.swift */; };
 		57A23F3D206DAC32007337D2 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A23F3C206DAC32007337D2 /* FavoritesTableViewController.swift */; };
 		6049D89D205B36BE0061A61A /* VetsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		163947B6AB11C054D3E6A271 /* Pods_SOS_Pets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOS_Pets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7FFB56D492F30ECFD8D274 /* Pods-SOS Pets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS Pets.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS Pets/Pods-SOS Pets.release.xcconfig"; sourceTree = "<group>"; };
+		5748F46D2093E2CA00CFE764 /* RecoverDataFromFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverDataFromFirebase.swift; sourceTree = "<group>"; };
 		577C8D8320929A8D00D7EC8B /* GetVetsFromDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVetsFromDatabaseService.swift; sourceTree = "<group>"; };
 		57A23F3C206DAC32007337D2 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetsListTableViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				889370B320599E8300DFC62A /* InitialViewController.swift */,
 				6049D89C205B36BE0061A61A /* VetsListTableViewController.swift */,
 				577C8D8320929A8D00D7EC8B /* GetVetsFromDatabaseService.swift */,
+				5748F46D2093E2CA00CFE764 /* RecoverDataFromFirebase.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				577C8D8420929A8D00D7EC8B /* GetVetsFromDatabaseService.swift in Sources */,
+				5748F46E2093E2CA00CFE764 /* RecoverDataFromFirebase.swift in Sources */,
 				889370B420599E8300DFC62A /* InitialViewController.swift in Sources */,
 				6049D89D205B36BE0061A61A /* VetsListTableViewController.swift in Sources */,
 				889370B220599E8300DFC62A /* AppDelegate.swift in Sources */,

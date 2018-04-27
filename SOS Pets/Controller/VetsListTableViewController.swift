@@ -16,10 +16,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
     let VetInfo = "VetInfo"
     var vets : [Place] = []
     var localizationManager = CLLocationManager()
-    let firebaseDBReference : DatabaseReference! = Database.database().reference()
     var refPics: DatabaseReference?
-    
-    @IBOutlet weak var distanceFromVetCell: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,50 +33,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
         tableView.delegate = self
         
     
-        //MARK: Recuperar dados do Firebase
-        var vetsList = firebaseDBReference.child("Vets").child("Vet Legal")
-    
         
-        //MARK: Observer "avisa" o banco de que tem novas informaçøes
-        vetsList.observe(DataEventType.value, with: {(dadosRecuperados) in
-        let dadosRecuperadosDoVet = dadosRecuperados.value as? NSDictionary
-            
-            //MARK: Recupera os dados do Firebase
-    
-            let nameOfVet = dadosRecuperadosDoVet?["nome"] as! String
-            let addressOfVet = dadosRecuperadosDoVet?["endereco"] as! String
-            let telephoneOfVet = dadosRecuperadosDoVet?["telefone"] as! String
-            let coordinateOfVet = dadosRecuperadosDoVet?["coordenada"] as! Double
-            let imageOfVet = dadosRecuperadosDoVet?["logo"] as! String
-            let URLOfString = URL(string: imageOfVet)
-            let specialtyOfVet = dadosRecuperadosDoVet?["especialidade"] as! String
-            let hourOfVet = dadosRecuperadosDoVet?["horario"] as! String
-
-            print ("dados recuperados: \(dadosRecuperados)")
-            
-            //MARK: Downlaod da imagem com a URL que é recuperada do Firebase
- 
-            let session = URLSession(configuration: .default)
-            let getImageFromUrl = session.dataTask(with: URLOfString!) { (data, response, error) in
-                if let e = error {
-                    print("Error Occurred: \(e)")
-                } else {
-                    if (response as? HTTPURLResponse) != nil {
-                        if let imageData = data {
-                            //Pegando a imagem
-                            let image = UIImage(data: imageData)
-                            let veterinario = Place(name: nameOfVet, coordinate: coordinateOfVet, telephone: telephoneOfVet, logo: image!, address: addressOfVet, hourOperating: hourOfVet, specialty: specialtyOfVet)
-
-                        } else {
-                            print("Algum erro ao recuperar a imagem")
-                        }
-                    }
-                }
-            }
-                getImageFromUrl.resume()
-                self.tableView.reloadData()
-                
-    })
     }
 
     func registerNotifications() {
@@ -97,6 +51,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
             }
         }
     }
+    
 
     // MARK: - Table view data source
     
@@ -119,7 +74,7 @@ class VetsListTableViewController: UITableViewController, CLLocationManagerDeleg
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let reusableCell = "celulaVet"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reusableCell, for: indexPath)
+                    let cell = tableView.dequeueReusableCell(withIdentifier: reusableCell, for: indexPath)
         cell.textLabel?.text = vets[indexPath.row].name
        
         return cell
